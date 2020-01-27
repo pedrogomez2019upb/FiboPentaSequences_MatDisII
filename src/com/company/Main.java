@@ -21,12 +21,17 @@ public class Main {
     //so that the procedure can be done, this goes for
     //counters, numbers, etc.
     public static int generateSumPentagonal(int x){
-        int sum=0;
-        int x=4;
-
+        int count=0;
         for(int i=1;i<=x;i++){
 
+            generatePentagonal(i);
+            if (i==x) System.out.println(generatePentagonal(i));
+            count++;
+
+
         }
+
+        return count;
     }
 
     //##################################################################
@@ -41,7 +46,8 @@ public class Main {
 
     }
     public static void main(String[] args) {
-
+        int x=generateSumPentagonal(50);
+        System.out.println(generateSumPentagonal(x));
 
 	//
     }
