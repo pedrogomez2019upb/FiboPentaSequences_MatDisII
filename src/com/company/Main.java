@@ -1,17 +1,9 @@
-//#################################
-//MAIN CLASS
-//#################################
-//Hi to everyone ! In this proyect , we are goint to
-//develop an exercise , which consist of giving the product
-//of the sum of the "x" first
 package com.company;
-//##################################################################
-//Importing "Read" library
-//##################################################################
-//In Java we need to import a library so that we can read an
-//external input given by the user. For this , we are going
-//to import the "scanner" library.
-import java.util.*;
+
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class Main {
     //##################################################################
@@ -46,45 +38,37 @@ public class Main {
         //Now in order to get the sum , we need go through every single
         //element on the list so that we can add them up and get the
         //final answer as a return.
-            int sum=0;
-            for (int i: Pentagonal) {
-                sum += i;
-            }
-            return sum;
+        int sum=0;
+        for (int i: Pentagonal) {
+            sum += i;
+        }
+        return sum;
     }
     //##################################################################
     //Creating Fibonacci function
     //##################################################################
     //First, we a going to create a Fibonacci function because we need to
     //change the "n" number various times so that we can get the sum
-    public static long generateFibonacci(long n) {
-        long num1 = 0, num2 = 1, num3 = 1;
-        List<Long> FibonacciNew= new ArrayList<Long>();
+    public static BigInteger generateFibonacci(long n) {
+        //BigInteger sumatory;
+        BigInteger num1=new BigInteger("1");
+        BigInteger num2=new BigInteger("0");
+        BigInteger num3=new BigInteger("0");
+        BigInteger sumatory=new BigInteger("0");
+        List<BigInteger> FibonacciNew= new ArrayList<BigInteger>();
         // Let's show the first number
         FibonacciNew.add(num1);
-
         for (int i = 1; i < n; i++) {
 
             FibonacciNew.add(num3);
 
-            num3 = num1 + num2;
+            num3 = num2.add(num1);
             num1 = num2;
             num2 = num3;
+            sumatory=sumatory.add(num3);
         }
-        //System.out.println(""+FibonacciNew);
-        //##################################################################
-        //Creating "For" cycle for the Fibonacci sequence's list sum.
-        //##################################################################
-        //Now in order to get the sum , we need go through every single
-        //element on the list so that we can add them up and get the
-        //final answer as a return.
+        return sumatory;
 
-        long sum=0;
-        for (long i: FibonacciNew) {
-            sum += i;
-
-        }
-        return sum;
     }
 
     public static void main(String[] args) {
@@ -98,6 +82,7 @@ public class Main {
         //"Scanner" library , we can read variables in Java, so first we are
         //going to create a instance of Scanner named "sc".
         Scanner sc = new Scanner(System.in);
+        BigInteger finalResult,pentagonalBI;
         //Now what's remaining is to create the System Output with the
         //messages and input required by the functions.
         System.out.println("\n##############################################");
@@ -117,12 +102,13 @@ public class Main {
         System.out.println("\n##############################################");
         System.out.println("\n##############################################");
         System.out.println("\nFibonacci and Pentagonal Sequence Result:");
-        long product = generateFibonacci(number)*generateSumPentagonal(number);
-        System.out.println("\n"+product);
+        pentagonalBI=BigInteger.valueOf(generateSumPentagonal(number));
+        finalResult = generateFibonacci(number).multiply(pentagonalBI);
+        System.out.println("\n"+finalResult);
         System.out.println("\n##############################################");
 
 
-	//
+        //
     }
 }
-//Developed by Pedro Gomez - 000396221
+//Developed by Pedro Gomez - ID:000396221
