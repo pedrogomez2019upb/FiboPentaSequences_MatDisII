@@ -12,7 +12,7 @@ package com.company;
 //external input given by the user. For this , we are going
 //to import the "scanner" library.
 import java.util.*;
-import java.util.stream.*;
+
 public class Main {
     //##################################################################
     //Creating Pentagonal function
@@ -57,9 +57,9 @@ public class Main {
     //##################################################################
     //First, we a going to create a Fibonacci function because we need to
     //change the "n" number various times so that we can get the sum
-    public static int generateFibonacci(int n) {
-        int num1 = 0, num2 = 1, num3 = 1;
-        List<Integer> FibonacciNew= new ArrayList<Integer>();
+    public static long generateFibonacci(long n) {
+        long num1 = 0, num2 = 1, num3 = 1;
+        List<Long> FibonacciNew= new ArrayList<Long>();
         // Let's show the first number
         FibonacciNew.add(num1);
 
@@ -71,14 +71,16 @@ public class Main {
             num1 = num2;
             num2 = num3;
         }
+        //System.out.println(""+FibonacciNew);
         //##################################################################
         //Creating "For" cycle for the Fibonacci sequence's list sum.
         //##################################################################
         //Now in order to get the sum , we need go through every single
         //element on the list so that we can add them up and get the
         //final answer as a return.
-        int sum=0;
-        for (int i: FibonacciNew) {
+
+        long sum=0;
+        for (long i: FibonacciNew) {
             sum += i;
 
         }
@@ -114,7 +116,7 @@ public class Main {
         System.out.println("\nFibonacci Sum: "+generateFibonacci(number));
         System.out.println("\n##############################################");
         System.out.println("\n##############################################");
-        System.out.println("\nFibonacci and Pentagonal Sequence Result");
+        System.out.println("\nFibonacci and Pentagonal Sequence Result:");
         long product = generateFibonacci(number)*generateSumPentagonal(number);
         System.out.println("\n"+product);
         System.out.println("\n##############################################");
