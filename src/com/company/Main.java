@@ -15,6 +15,17 @@ import java.util.*;
 import java.util.stream.*;
 public class Main {
     //##################################################################
+    //Creating Pentagonal function
+    //##################################################################
+    //First, we a going to create a Pentagonal function because we need to
+    //change the "n" number various times so that we can get the sum
+    public static int generatePentagonal(int n){
+
+        return (n * (3 * n - 1))/2;
+
+
+    }
+    //##################################################################
     //Creating "For" cycle for the Pentagonal sequence's list.
     //##################################################################
     //Then, we are going to create the required variables
@@ -41,42 +52,24 @@ public class Main {
             }
             return sum;
     }
-
-    //##################################################################
-    //Creating Pentagonal function
-    //##################################################################
-    //First, we a going to create a Pentagonal function because we need to
-    //change the "n" number various times so that we can get the sum
-    public static int generatePentagonal(int n){
-
-        return (n * (3 * n - 1))/2;
-
-
-    }
     //##################################################################
     //Creating Fibonacci function
     //##################################################################
     //First, we a going to create a Fibonacci function because we need to
     //change the "n" number various times so that we can get the sum
     public static int generateFibonacci(int n) {
-        if (n<=1)
-            return n;
-        return generateFibonacci(n-1)+generateFibonacci(n-2);
-    }
-    //##################################################################
-    //Creating "For" cycle for the Fibonacci sequence's list sum.
-    //##################################################################
-    //Now in order to get the sum , we need go through every single
-    //element on the list so that we can add them up and get the
-    //final answer as a return.
-    public static int generateSumFibonacci(int x){
-        int count=0;
-        List<Integer> Fibonacci =new ArrayList<Integer>();
-        for(int i=1;i<=x;i++){
-            Fibonacci.add(generateFibonacci(i));
-            //NOTE:USE IF YOU WANT TO GET THE x TERM ON PENTAGONAL SEQUENCE
-            //if (i==x) System.out.println(generatePentagonal(i));
-            count++;
+        int num1 = 0, num2 = 1, num3 = 1;
+        List<Integer> FibonacciNew= new ArrayList<Integer>();
+        // Let's show the first number
+        FibonacciNew.add(num1);
+
+        for (int i = 1; i < n; i++) {
+
+            FibonacciNew.add(num3);
+
+            num3 = num1 + num2;
+            num1 = num2;
+            num2 = num3;
         }
         //##################################################################
         //Creating "For" cycle for the Fibonacci sequence's list sum.
@@ -85,13 +78,15 @@ public class Main {
         //element on the list so that we can add them up and get the
         //final answer as a return.
         int sum=0;
-        for (int i: Fibonacci) {
+        for (int i: FibonacciNew) {
             sum += i;
+
         }
         return sum;
     }
 
     public static void main(String[] args) {
+        //System.out.println(""+generateFibonacci(3));
         //##################################################################
         //MAIN PROGRAM
         //##################################################################
@@ -113,21 +108,17 @@ public class Main {
         System.out.println("\nPlease enter the first x terms you want to use:");
         int number = sc.nextInt();
         System.out.println("\n##############################################");
-        System.out.println("\nPentagonal Sum: "+generatePentagonal(number));
+        System.out.println("\nPentagonal Sum: "+generateSumPentagonal(number));
         System.out.println("\n##############################################");
         System.out.println("\n##############################################");
-        System.out.println("\nFibonacci Sum: "+generateSumFibonacci(number));
+        System.out.println("\nFibonacci Sum: "+generateFibonacci(number));
         System.out.println("\n##############################################");
         System.out.println("\n##############################################");
         System.out.println("\nFibonacci and Pentagonal Sequence Result");
-        long product = generateFibonacci(number)*generateSumFibonacci(number);
+        long product = generateFibonacci(number)*generateSumPentagonal(number);
         System.out.println("\n"+product);
         System.out.println("\n##############################################");
 
-
-
-
-        //System.out.println(generateSumPentagonal(number));
 
 	//
     }
